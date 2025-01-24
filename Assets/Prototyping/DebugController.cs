@@ -18,6 +18,7 @@ public class DebugController : MonoBehaviour
     public List<object> commandList;
 
     // Custom commands
+    public static DebugCommand<int> SETAIR;
 
     private bool wasCursorLocked;
 
@@ -56,6 +57,7 @@ public class DebugController : MonoBehaviour
         HELP = new DebugCommand("help", "Shows a list of commands", "help", () => showHelp = !showHelp);
         CURSOR = new DebugCommand<string>("cursor", "Edits CursorLockMode (none, confined, locked)", "cursor <lockmode>", (x) => { CursorMode(x); });
         TP = new DebugCommand<string>("tp", "Teleports the player at a specified POI (" + teleportHelp + ")", "tp <poi>", (x) => { Teleport(x); });
+        //SETAIR = new DebugCommand<int>("setair",);
 
         // Custom Commands
 
@@ -64,6 +66,7 @@ public class DebugController : MonoBehaviour
             HELP,
             CURSOR,
             TP,
+            SETAIR
         };      
 
         Debug.Log("DebugConsole active! Yeah! Press . to toggle the console and type help for... Help... duh");
