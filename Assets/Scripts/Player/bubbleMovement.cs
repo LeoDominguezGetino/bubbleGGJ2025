@@ -28,6 +28,9 @@ public class BubbleMovement : MonoBehaviour
     // PickUp Values
     public Item pickedItem;
 
+    // Graphic Elements
+    [SerializeField] Transform reflections;
+
     private void Awake()
     {
         input = new InputSystem_Actions();
@@ -43,6 +46,8 @@ public class BubbleMovement : MonoBehaviour
         updateSize();
 
         currentCoodown -= Time.deltaTime;
+
+        reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
     }
 
     private void FixedUpdate()
