@@ -4,7 +4,7 @@ public class AirCollectible : MonoBehaviour
 {
     public float airAmount = 0.25f;
 
-    private void Awake()
+    private void Update()
     {
         transform.localScale = Vector3.one * airAmount;
     }
@@ -14,9 +14,7 @@ public class AirCollectible : MonoBehaviour
         if (collision != null)
         {
             BubbleMovement bubble = collision.gameObject.GetComponent<BubbleMovement>();
-            if (bubble != null) { bubble.air += airAmount; }
-
-            Destroy(this.gameObject);
+            if (bubble != null) { bubble.air += airAmount; Destroy(this.gameObject); }
         }
     }
 }

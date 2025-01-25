@@ -24,7 +24,8 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] float dashCooldown = 1;
     private float currentCoodown;
 
-    bool hossObject;
+    // PickUp Values
+    public Item pickedItem;
 
     private void Awake()
     {
@@ -56,11 +57,14 @@ public class BubbleMovement : MonoBehaviour
     {
         input.Player.Enable();
         input.Player.Dash.performed += OnDash;
+        input.Player.Drop.performed += OnDrop;
     }
 
     private void OnDisable()
     {
-        input.Player.Disable(); 
+        input.Player.Disable();
+        input.Player.Dash.performed -= OnDash;
+        input.Player.Drop.performed -= OnDrop;
     }
 
     void updateSize()
@@ -83,6 +87,23 @@ public class BubbleMovement : MonoBehaviour
             rb.linearVelocity += (dir * dashSpeed);
             air -= dashAirCost;
             currentCoodown = dashCooldown;
+
+            if (pickedItem != null)
+            {
+                pickedItem.isPickedUp = false;
+                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * -(air / 2 + pickedItem.minAir / 2));
+                pickedItem.GetComponent<Rigidbody2D>().linearVelocity = dir * -dashSpeed;
+                pickedItem = null;
+            }
         }
+    }
+
+    public void OnDrop(InputAction.CallbackContext inputValue) { Drop(); }
+
+    void Drop()
+    {
+        pickedItem.isPickedUp = false;
+        pickedItem.transform.position = transform.position + (Vector3.down * (air / 2 + pickedItem.minAir / 2));
+        pickedItem = null;
     }
 }

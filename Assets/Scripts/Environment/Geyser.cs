@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Geyser : MonoBehaviour
@@ -5,10 +6,38 @@ public class Geyser : MonoBehaviour
     public GameObject airCollectible;
 
     [SerializeField] int bubblesRate = 25;
-    float rate;
+    [SerializeField] float emittingTime = 2;
+    [SerializeField] float pauseTime = 2;
+    [SerializeField] float bubblesLifetime = 2;
+    [SerializeField] float coneWith = 0.25f;
 
-    private void Update()
+    [SerializeField] float airAmount;
+    [SerializeField] float airInitialForce;
+    [SerializeField] float airUpForce;
+
+    void Start()
     {
-        AirCollectible airBubble = Instantiate(airCollectible).GetComponent<AirCollectible>();
+        StartCoroutine(SpawnBubbles());;
+    }
+
+    private IEnumerator SpawnBubbles()
+    {
+        while (true)
+        {
+            for (int i = 0; i < bubblesRate; i++)
+            {
+                yield return new WaitForSeconds(emittingTime / bubblesRate);
+                AirCollectible airBubble = Instantiate(airCollectible).GetComponent<AirCollectible>();
+                airBubble.transform.position = transform.position;
+                airBubble.airAmount = airAmount;
+                Rigidbody2D rb = airBubble.GetComponent<Rigidbody2D>();
+                rb.linearVelocity = (transform.up + (transform.right * Random.Range(-coneWith, coneWith)) * airInitialForce);
+                rb.gravityScale = -airUpForce;
+
+                Destroy(airBubble.gameObject, bubblesLifetime);
+            }
+
+            yield return new WaitForSeconds(pauseTime);
+        }
     }
 }
