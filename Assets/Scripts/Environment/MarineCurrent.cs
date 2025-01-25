@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MarineCurrent : MonoBehaviour
 {
+    public bool isActivated = true;
+
     [SerializeField] float maxDistance = 5;
     [SerializeField] float wide = 1;
     [SerializeField] LayerMask wallsLayer;
@@ -14,5 +16,10 @@ public class MarineCurrent : MonoBehaviour
         if (hit) { distance = hit.distance; }
 
         transform.localScale = new Vector3(distance / 2, wide / 2, 0);
+
+        GetComponent<AreaEffector2D>().enabled = isActivated;
     }
+
+    public void Activate() { isActivated = true; }
+    public void Deactivate() { isActivated = false; }
 }
