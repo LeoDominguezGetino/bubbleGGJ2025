@@ -18,19 +18,9 @@ public class GameManager : MonoBehaviour
     public bool inLanguageSelection;
     public bool inMenu = false;
     public bool gameOver = false;
-<<<<<<< Updated upstream
 
-<<<<<<< Updated upstream
     public bool victory;
-
-    private void Awake()
-=======
     private void Start()
->>>>>>> Stashed changes
-=======
-
-    private void Start()
->>>>>>> Stashed changes
     {
         Instance = this;
         inLanguageSelection = true;
