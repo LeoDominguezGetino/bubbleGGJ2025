@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class BubbleMovement : MonoBehaviour
 {
-    InputSystem_Actions input;
-
     // Movement Values
     Rigidbody2D rb;
     Vector2 dir;
@@ -18,6 +16,7 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] float airLossOverTime = 0.01f;
     [SerializeField] float airDeflate = 0.5f;
     [SerializeField] float maxAir = 2.5f;
+    float isDeflating;
 
     // Dash Values
     [SerializeField] float dashSpeed = 10;    
@@ -33,16 +32,23 @@ public class BubbleMovement : MonoBehaviour
 
     private void Awake()
     {
-        input = new InputSystem_Actions();
         rb = GetComponent<Rigidbody2D>();
-    }    
+    }
+
+    public void OnMove(InputAction.CallbackContext inputValue)
+    {
+        float horizontal = inputValue.ReadValue<Vector2>().x;
+        float vertical = inputValue.ReadValue<Vector2>().y;
+        dir = new Vector2(horizontal, vertical).normalized;
+    }
+
+    public void OnDeflate(InputAction.CallbackContext inputValue)
+    {
+        isDeflating = inputValue.ReadValue<float>();
+    }
 
     void Update()
     {
-        float horizontal = input.Player.Move.ReadValue<Vector2>().x;
-        float vertical = input.Player.Move.ReadValue<Vector2>().y;
-        dir = new Vector2(horizontal, vertical).normalized;
-
         updateSize();
 
         currentCoodown -= Time.deltaTime;
@@ -59,25 +65,11 @@ public class BubbleMovement : MonoBehaviour
         }        
     }
 
-    private void OnEnable()
-    {
-        input.Player.Enable();
-        input.Player.Dash.performed += OnDash;
-        input.Player.Drop.performed += OnDrop;
-    }
-
-    private void OnDisable()
-    {
-        input.Player.Disable();
-        input.Player.Dash.performed -= OnDash;
-        input.Player.Drop.performed -= OnDrop;
-    }
-
     void updateSize()
     {
         if (air > 0)
         {
-            air -= airDeflate * input.Player.Deflate.ReadValue<float>() * Time.deltaTime;
+            air -= airDeflate * isDeflating * Time.deltaTime;
             air -= airLossOverTime * Time.deltaTime;
         }
         

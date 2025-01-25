@@ -17,9 +17,10 @@ public class Item : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == GameManager.Instance.Player) { 
+        bubble = collision.gameObject.GetComponent<BubbleMovement>();
+
+        if (bubble) { 
             
-            bubble = GameManager.Instance.Player.GetComponent<BubbleMovement>();
             if (bubble.air >= minAir) {
                 isPickedUp = true;
                 bubble.pickedItem = this;
