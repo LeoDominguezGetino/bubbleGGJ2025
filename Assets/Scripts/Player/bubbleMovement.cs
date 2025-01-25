@@ -11,6 +11,8 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] float maxSpeed = 5;
     [SerializeField] float acceleration = 0.5f;
 
+    bool gameOver;
+
     // Air Values
     public float air = 1;
     [SerializeField] float airLossOverTime = 0.01f;
@@ -32,6 +34,7 @@ public class BubbleMovement : MonoBehaviour
 
     private void Awake()
     {
+        gameOver = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -49,11 +52,19 @@ public class BubbleMovement : MonoBehaviour
 
     void Update()
     {
-        updateSize();
+        if (gameOver == true)
+        {
+            Destroy(this.gameObject);
+        }
+        if (gameOver == false)
+        {
+            updateSize();
 
-        currentCoodown -= Time.deltaTime;
+            currentCoodown -= Time.deltaTime;
 
-        reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
+            reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
+        }
+        
     }
 
     private void FixedUpdate()
@@ -67,6 +78,10 @@ public class BubbleMovement : MonoBehaviour
 
     void updateSize()
     {
+        if (air <= 0)
+        {
+            gameOver = true;
+        }
         if (air > 0)
         {
             air -= airDeflate * isDeflating * Time.deltaTime;
@@ -105,5 +120,16 @@ public class BubbleMovement : MonoBehaviour
         pickedItem.isPickedUp = false;
         pickedItem.transform.position = transform.position + (Vector3.down * (air / 2 + pickedItem.minAir / 2));
         pickedItem = null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            Debug.Log("collision detected with hostile");
+            gameOver = true;
+        }
+
+
     }
 }
