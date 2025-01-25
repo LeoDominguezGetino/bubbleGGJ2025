@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: foreground
+  m_Name: scenary
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
