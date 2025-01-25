@@ -728,7 +728,7 @@ MonoBehaviour:
   acceleration: 0.5
   waterLevelY: 17
   air: 1
-  airLossOverTime: 0.01
+  airLossOverTime: 0
   airDeflate: 0.5
   maxAir: 2.5
   dashSpeed: 10

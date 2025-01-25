@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,15 +11,43 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Players;
 
     public CinemachineTargetGroup cameraMultiTarget;
+    public CinemachineCamera menuCamera;
+    public CinemachineCamera inGameCamera;
 
-    public bool gameOver;
+    
+    public bool inLanguageSelection;
+    public bool inMenu = false;
+    public bool gameOver = false;
 
+<<<<<<< Updated upstream
     public bool victory;
 
     private void Awake()
+=======
+    private void Start()
+>>>>>>> Stashed changes
     {
         Instance = this;
-        gameOver = false;
+        inLanguageSelection = true;
+    }
+
+    private void Update()
+    {
+        if (inLanguageSelection)
+        {
+
+        }
+
+        if (inMenu)
+        {
+
+        }
+
+        if (gameOver)
+        {
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //PlayerInputManager.JoinPlayer(InputDevice[]);
+        }
     }
 
     private void OnEnable()

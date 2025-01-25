@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: 82c1b9cab8dcafa42b796f6259c4d192
+guid: 30cd804121740c846af5563b6e8a5f03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 649223268058989734
-    second: Button_0
+      213: -7352339073622421304
+    second: Title_0
   - first:
-      213: -9000188618666376746
-    second: Button_1
-  - first:
-      213: 8467241744927558709
-    second: Button_2
-  - first:
-      213: 1566552715412073297
-    second: Button_3
-  - first:
-      213: -1257769187640015746
-    second: Button_4
+      213: 578584420991164872
+    second: Title_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -138,111 +129,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_0
+      name: eng_title
       rect:
         serializedVersion: 2
-        x: 551
-        y: 21
-        width: 347
-        height: 396
+        x: 0
+        y: 895
+        width: 1283
+        height: 894
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6a403906f11820900800000000000000
-      internalID: 649223268058989734
+      spriteID: 7e0ec24979736e740953b5b93f1dbbbb
+      internalID: -2073468977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Button_1
+      name: ita_title
       rect:
         serializedVersion: 2
-        x: 1937
-        y: 16
-        width: 588
-        height: 437
+        x: 0
+        y: 1
+        width: 1283
+        height: 894
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6d180e8e228e81380800000000000000
-      internalID: -9000188618666376746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Button_2
-      rect:
-        serializedVersion: 2
-        x: 3240
-        y: 17
-        width: 938
-        height: 397
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53c04c1718fa18570800000000000000
-      internalID: 8467241744927558709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Button_3
-      rect:
-        serializedVersion: 2
-        x: 4575
-        y: 26
-        width: 1241
-        height: 387
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15b6f0c05638db510800000000000000
-      internalID: 1566552715412073297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Button_4
-      rect:
-        serializedVersion: 2
-        x: 5982
-        y: 29
-        width: 1429
-        height: 361
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e74094976918b8ee0800000000000000
-      internalID: -1257769187640015746
+      spriteID: 81dd1870e23598f4cb6a681c96511889
+      internalID: -1591930541
       vertices: []
       indices: 
       edges: []
@@ -251,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2fe919ba403871e4184b2d2a10d85372
     internalID: 0
     vertices: []
     indices: 
@@ -261,11 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Button_0: 649223268058989734
-      Button_1: -9000188618666376746
-      Button_2: 8467241744927558709
-      Button_3: 1566552715412073297
-      Button_4: -1257769187640015746
+      eng_title: -2073468977
+      ita_title: -1591930541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

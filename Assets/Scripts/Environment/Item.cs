@@ -35,9 +35,12 @@ public class Item : MonoBehaviour
     {
         if (isPickedUp)
         {
-            transform.position = bubble.transform.position;
+            if (bubble) {
+                transform.position = bubble.transform.position;
 
-            if (bubble.air <= minAir) { isPickedUp = false; bubble.pickedItem = null; }
+                if (bubble.air <= minAir) { isPickedUp = false; bubble.pickedItem = null; }
+            }
+            
         } else
         {
             coll.enabled = true;
