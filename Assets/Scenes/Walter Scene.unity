@@ -151,10 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {x: -8, y: -15}
-  - {x: -10, y: -15}
-  - {x: -9, y: -13}
+  - {x: -8, y: -20}
+  - {x: -10, y: -20}
+  - {x: -9, y: -15}
   speed: 5
+  flatedDuration: 2
 --- !u!212 &831778911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -219,7 +220,7 @@ Transform:
   m_GameObject: {fileID: 831778909}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -15, z: 0}
+  m_LocalPosition: {x: -8, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

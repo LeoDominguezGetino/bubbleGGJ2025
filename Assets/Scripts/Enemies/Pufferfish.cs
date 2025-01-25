@@ -21,6 +21,7 @@ public class Pufferfish : MonoBehaviour
     }
     STATE currentState;
     float inflatedDuration;
+    [SerializeField] float flatedDuration = 2;
 
 
     private void Start()
@@ -47,7 +48,7 @@ public class Pufferfish : MonoBehaviour
     private void Update()
     {
 
-        if (enableMovement)
+        if (enableMovement && GameManager.Instance.gameOver == false) 
         {
             moveToAPoint(nextPosition);
             if(inflatedDuration > 0)
@@ -72,7 +73,7 @@ public class Pufferfish : MonoBehaviour
 
                 case STATE.MOVE:
                     currentState = STATE.INFLATION;
-                    inflatedDuration = 2;
+                    inflatedDuration = flatedDuration;
                     break;
 
                 case STATE.INFLATION:

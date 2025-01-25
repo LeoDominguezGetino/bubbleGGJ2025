@@ -11,7 +11,7 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] float maxSpeed = 5;
     [SerializeField] float acceleration = 0.5f;
 
-    bool gameOver;
+    //bool gameOver;
 
     // Air Values
     public float air = 1;
@@ -34,7 +34,7 @@ public class BubbleMovement : MonoBehaviour
 
     private void Awake()
     {
-        gameOver = false;
+        //GameManager.Instance.gameOver = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -52,11 +52,14 @@ public class BubbleMovement : MonoBehaviour
 
     void Update()
     {
-        if (gameOver == true)
+        if (GameManager.Instance.gameOver == true)
         {
             Destroy(this.gameObject);
+            //INSERIRE IMMAGINI / ANIMAZIONE GAME OVER
+            Debug.Log("GAME OVER");
+
         }
-        if (gameOver == false)
+        if (GameManager.Instance.gameOver == false)
         {
             updateSize();
 
@@ -80,7 +83,7 @@ public class BubbleMovement : MonoBehaviour
     {
         if (air <= 0)
         {
-            gameOver = true;
+            GameManager.Instance.gameOver = true;
         }
         if (air > 0)
         {
@@ -127,7 +130,7 @@ public class BubbleMovement : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             Debug.Log("collision detected with hostile");
-            gameOver = true;
+            GameManager.Instance.gameOver = true;
         }
     }
 }

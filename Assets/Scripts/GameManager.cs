@@ -11,9 +11,12 @@ public class GameManager : MonoBehaviour
 
     public CinemachineTargetGroup cameraMultiTarget;
 
+    public bool gameOver;
+
     private void Awake()
     {
         Instance = this;
+        gameOver = false;
     }
 
     private void OnEnable()
