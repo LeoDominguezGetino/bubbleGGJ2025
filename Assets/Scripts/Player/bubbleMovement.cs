@@ -41,12 +41,9 @@ public class BubbleMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext inputValue)
     {
-        if (transform.position.y <= waterLevelY)
-        {
-            float horizontal = inputValue.ReadValue<Vector2>().x;
-            float vertical = inputValue.ReadValue<Vector2>().y;
-            dir = new Vector2(horizontal, vertical).normalized;
-        } else { Debug.Log("Not UnderWater"); }
+        float horizontal = inputValue.ReadValue<Vector2>().x;
+        float vertical = inputValue.ReadValue<Vector2>().y;
+        dir = new Vector2(horizontal, vertical).normalized;
     }
 
     public void OnDeflate(InputAction.CallbackContext inputValue)
@@ -71,7 +68,7 @@ public class BubbleMovement : MonoBehaviour
 
             reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
 
-            if (transform.position.y > waterLevelY) { rb.gravityScale = 10; }
+            if (transform.position.y > waterLevelY) { rb.gravityScale = 1; }
             else { rb.gravityScale = 0; }
         }
 
@@ -79,6 +76,8 @@ public class BubbleMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (transform.position.y > waterLevelY) { return; }
+
         if (rb.linearVelocity.magnitude < maxSpeed)
         {
             //rb.AddForce(dir * acceleration);
