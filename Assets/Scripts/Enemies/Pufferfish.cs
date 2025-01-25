@@ -6,6 +6,8 @@ using System;
 
 public class Pufferfish : MonoBehaviour
 {
+    [SerializeField] Sprite SpriteDeflate;
+    [SerializeField] Sprite SpriteInflate;
 
     [SerializeField] List<Vector2> positions = new List<Vector2>();
     Vector2 currentPosition;
@@ -14,6 +16,7 @@ public class Pufferfish : MonoBehaviour
     private bool enableMovement;
     float currentDistance;
     int index;
+    Animator animator;
     public enum STATE
     {
         MOVE,
@@ -26,6 +29,7 @@ public class Pufferfish : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         if (positions.Count <= 1)
         {
             currentState = STATE.INFLATION;
@@ -73,6 +77,7 @@ public class Pufferfish : MonoBehaviour
 
                 case STATE.MOVE:
                     currentState = STATE.INFLATION;
+                    //this.gameObject.transform.localScale
                     inflatedDuration = flatedDuration;
                     break;
 
@@ -80,11 +85,17 @@ public class Pufferfish : MonoBehaviour
 
                     if (inflatedDuration > 0)
                     {
+
+                        this.gameObject.layer = 10;
+                        animator.SetBool("inflated", true);
                         //Debug.Log("ESEGUI ANIMAZIONE");
                         //ESEGUI CAMBIO SPRITES PUFFERFISH
                     }
                     else if (inflatedDuration == 0)
                     {
+                        this.gameObject.layer = 0;
+                        animator.SetBool("inflated", false);
+                        //GetComponent<SpriteRenderer>().sprite = SpriteDeflate;
                         index++;
                         if (index == positions.Count)
                         {

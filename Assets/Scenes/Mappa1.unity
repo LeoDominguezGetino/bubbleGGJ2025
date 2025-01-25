@@ -12022,6 +12022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_square
       objectReference: {fileID: 0}
+    - target: {fileID: 7393344368267580440, guid: 52d8e527525589e42970f203e4d6d01b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

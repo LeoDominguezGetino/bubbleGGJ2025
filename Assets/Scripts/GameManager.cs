@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public bool gameOver;
 
+    public bool victory;
+
     private void Awake()
     {
         Instance = this;
