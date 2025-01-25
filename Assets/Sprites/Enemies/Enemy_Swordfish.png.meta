@@ -210,7 +210,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Enemy_Swordfish_0: -3863693167657719928
+      Enemy_Swordfish_1: 3058097930678862236
+      Enemy_Swordfish_2: -745006279725275886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

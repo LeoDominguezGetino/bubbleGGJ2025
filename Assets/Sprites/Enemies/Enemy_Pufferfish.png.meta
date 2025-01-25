@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Enemy_Pufferfish_0: 6531298916836605319
+      Enemy_Pufferfish_1: 3838201658231534614
+      Enemy_Pufferfish_2: -1975875800651846026
+      Enemy_Pufferfish_3: 5998399585550324429
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
