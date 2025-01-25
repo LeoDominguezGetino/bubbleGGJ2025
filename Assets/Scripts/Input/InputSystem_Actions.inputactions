@@ -204,6 +204,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d1830d8d-99e5-46bb-8f75-c7a5846e1b52",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "24c8c5a3-2140-45da-99d4-7d8a8e653dc5",
                     "path": "<Keyboard>/slash",
                     "interactions": "",
@@ -237,6 +248,17 @@
                 },
                 {
                     "name": "",
+                    "id": "6f1c1f3a-ec29-403e-9de7-12b113454863",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch;Keyboard Secondary",
+                    "action": "Deflate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "36e52cba-0905-478e-a818-f4bfcb9f3b9a",
                     "path": "<Keyboard>/v",
                     "interactions": "",
@@ -250,6 +272,17 @@
                     "name": "",
                     "id": "ff558de2-630f-4d77-abfc-727f053b731d",
                     "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Secondary",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0bf2049-c8d0-44db-acdc-b0db6133bd83",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard Secondary",

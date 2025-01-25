@@ -208,12 +208,12 @@ public class DebugController : MonoBehaviour
     {
         if (teleportDictionary.TryGetValue(location, out var targetPoint))
         {
-            GameManager.Instance.Player.GetComponent<CharacterController>().enabled = false;
-            GameManager.Instance.Player.transform.position = targetPoint;
+            GameManager.Instance.Players[0].GetComponent<CharacterController>().enabled = false;
+            GameManager.Instance.Players[0].transform.position = targetPoint;
 
             Debug.Log($"Teleported to {location}");
 
-            GameManager.Instance.Player.GetComponent<CharacterController>().enabled = true;
+            GameManager.Instance.Players[0].GetComponent<CharacterController>().enabled = true;
 
             ToggleDebug();
         }
