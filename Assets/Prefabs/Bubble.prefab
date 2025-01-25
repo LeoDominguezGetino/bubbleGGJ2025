@@ -726,6 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   acceleration: 0.5
+  waterLevelY: 17
   air: 1
   airLossOverTime: 0.01
   airDeflate: 0.5

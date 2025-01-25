@@ -10,6 +10,7 @@ public class BubbleMovement : MonoBehaviour
     Vector2 dir;
     [SerializeField] float maxSpeed = 5;
     [SerializeField] float acceleration = 0.5f;
+    [SerializeField] int waterLevelY;
 
     //bool gameOver;
 
@@ -40,9 +41,12 @@ public class BubbleMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext inputValue)
     {
-        float horizontal = inputValue.ReadValue<Vector2>().x;
-        float vertical = inputValue.ReadValue<Vector2>().y;
-        dir = new Vector2(horizontal, vertical).normalized;
+        if (transform.position.y <= waterLevelY)
+        {
+            float horizontal = inputValue.ReadValue<Vector2>().x;
+            float vertical = inputValue.ReadValue<Vector2>().y;
+            dir = new Vector2(horizontal, vertical).normalized;
+        } else { Debug.Log("Not UnderWater"); }
     }
 
     public void OnDeflate(InputAction.CallbackContext inputValue)
@@ -66,6 +70,9 @@ public class BubbleMovement : MonoBehaviour
             currentCoodown -= Time.deltaTime;
 
             reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
+
+            if (transform.position.y > waterLevelY) { rb.gravityScale = 10; }
+            else { rb.gravityScale = 0; }
         }
 
     }
