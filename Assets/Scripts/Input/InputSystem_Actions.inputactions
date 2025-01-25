@@ -252,7 +252,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Touch;Keyboard Secondary",
+                    "groups": "Touch;Gamepad",
                     "action": "Deflate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -263,7 +263,7 @@
                     "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Primary",
+                    "groups": "Keyboard Primary;Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -285,7 +285,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Secondary",
+                    "groups": "Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false

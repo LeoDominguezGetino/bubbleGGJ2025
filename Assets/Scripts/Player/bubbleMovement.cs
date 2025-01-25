@@ -120,6 +120,7 @@ public class BubbleMovement : MonoBehaviour
 
     void Drop()
     {
+        if (pickedItem  == null) { return; }
         pickedItem.isPickedUp = false;
         pickedItem.transform.position = transform.position + (Vector3.down * (air / 2 + pickedItem.minAir / 2));
         pickedItem = null;

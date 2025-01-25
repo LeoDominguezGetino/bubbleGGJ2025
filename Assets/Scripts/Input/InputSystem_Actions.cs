@@ -274,7 +274,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Touch;Keyboard Secondary"",
+                    ""groups"": ""Touch;Gamepad"",
                     ""action"": ""Deflate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -285,7 +285,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/v"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard Primary"",
+                    ""groups"": ""Keyboard Primary;Gamepad"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -307,7 +307,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard Secondary"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
