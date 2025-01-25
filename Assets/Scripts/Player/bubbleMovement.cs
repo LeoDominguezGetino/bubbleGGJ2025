@@ -21,7 +21,7 @@ public class BubbleMovement : MonoBehaviour
     float isDeflating;
 
     // Dash Values
-    [SerializeField] float dashSpeed = 10;    
+    [SerializeField] float dashSpeed = 10;
     [SerializeField] float dashAirCost = 0.5f;
     [SerializeField] float dashCooldown = 1;
     private float currentCoodown;
@@ -64,16 +64,16 @@ public class BubbleMovement : MonoBehaviour
 
             reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
         }
-        
+
     }
 
     private void FixedUpdate()
     {
-        if(rb.linearVelocity.magnitude < maxSpeed)
+        if (rb.linearVelocity.magnitude < maxSpeed)
         {
             //rb.AddForce(dir * acceleration);
             rb.linearVelocity += (dir * acceleration);
-        }        
+        }
     }
 
     void updateSize()
@@ -87,7 +87,7 @@ public class BubbleMovement : MonoBehaviour
             air -= airDeflate * isDeflating * Time.deltaTime;
             air -= airLossOverTime * Time.deltaTime;
         }
-        
+
         if (air > maxAir) { air = maxAir; }
 
         transform.localScale = Vector3.one * air;
@@ -129,7 +129,5 @@ public class BubbleMovement : MonoBehaviour
             Debug.Log("collision detected with hostile");
             gameOver = true;
         }
-
-
     }
 }
