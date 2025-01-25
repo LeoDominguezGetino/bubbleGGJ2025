@@ -80,7 +80,7 @@ public class Pufferfish : MonoBehaviour
 
                     if (inflatedDuration > 0)
                     {
-                        Debug.Log("ESEGUI ANIMAZIONE");
+                        //Debug.Log("ESEGUI ANIMAZIONE");
                         //ESEGUI CAMBIO SPRITES PUFFERFISH
                     }
                     else if (inflatedDuration == 0)
