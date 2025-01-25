@@ -17,6 +17,7 @@ public class BubbleMovement : MonoBehaviour
     public float air = 1;
     [SerializeField] float airLossOverTime = 0.01f;
     [SerializeField] float airDeflate = 0.5f;
+    [SerializeField] float maxAir = 2.5f;
 
     // Dash Values
     [SerializeField] float dashSpeed = 10;    
@@ -75,6 +76,8 @@ public class BubbleMovement : MonoBehaviour
             air -= airLossOverTime * Time.deltaTime;
         }
         
+        if (air > maxAir) { air = maxAir; }
+
         transform.localScale = Vector3.one * air;
     }
 
