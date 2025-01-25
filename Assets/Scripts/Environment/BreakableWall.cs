@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BreakableWall : MonoBehaviour
 {
-    [SerializeField] float minimumVelocityBreaking = 10;
+    //[SerializeField] float minimumVelocityBreaking = 10;
 
     
 
@@ -12,12 +12,12 @@ public class BreakableWall : MonoBehaviour
         
         if (collision.gameObject.layer == 7)
         {
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            Debug.Log(rb.linearVelocity.magnitude + " && " + minimumVelocityBreaking);
-            if (rb.linearVelocity.magnitude >= minimumVelocityBreaking)
-            {
+            //Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            //Debug.Log(rb.linearVelocity.magnitude + " && " + minimumVelocityBreaking);
+            //if (rb.linearVelocity.magnitude >= minimumVelocityBreaking)
+            //{
                 Destroy(this.gameObject);
-            }
+            //}
             
         }
     }
