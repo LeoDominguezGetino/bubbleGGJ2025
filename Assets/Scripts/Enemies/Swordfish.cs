@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using static DebugController;
 
@@ -8,25 +7,9 @@ public class Swordfish : MonoBehaviour
     Vector2 startPosition;
     [SerializeField] float speed;
 
-    [SerializeField] AudioClip[] audioclips;
-    AudioSource audioSource;
-
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         startPosition = transform.position;
-
-        StartCoroutine(SoundCues());
-    }
-
-    private IEnumerator SoundCues()
-    {
-        while (true)
-        {
-            audioSource.clip = audioclips[Random.Range(0, audioclips.Length-1)];
-            audioSource.Play();
-            yield return new WaitForSeconds(5);
-        }
     }
 
     private void Update()

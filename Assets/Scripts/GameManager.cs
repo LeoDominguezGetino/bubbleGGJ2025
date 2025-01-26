@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public bool victory;
 
-    public GameObject successScreen;
+    public Animator successScreenAnimator;
 
     private void Start()
     {
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         }
 
         menuCamera.Priority = 1;
-        successScreen.SetActive(true);
+        successScreenAnimator.Play("",0);
     }
 
     public void Replay()
