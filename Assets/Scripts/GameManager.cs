@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject successScreen;
 
-    public Vector2 playerStart;
-    bool playersJoined = false;
-
     private void Start()
     {
         Instance = this;
@@ -61,10 +58,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (!playersJoined) { StartCoroutine(JoinPlayers()); }
-        else { StartCoroutine(SpawnPlayers()); }
-        
 
+        StartCoroutine(JoinPlayers());
         menuCamera.Priority = -1;
     }
 
@@ -73,16 +68,6 @@ public class GameManager : MonoBehaviour
         PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
         yield return new WaitForSeconds(1);
         PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);    
-    }
-
-    private IEnumerator SpawnPlayers()
-    {
-        foreach (var player in Players)
-        {
-            player.transform.position = playerStart;
-            yield return new WaitForSeconds(1);
-            player.gameObject.SetActive(true);
-        }
     }
 
     public void Success()
