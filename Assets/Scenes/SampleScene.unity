@@ -8726,7 +8726,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10772,7 +10772,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -27308,7 +27308,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -29395,6 +29395,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752634603}
   m_CullTransparentMesh: 1
+--- !u!1001 &1765994011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7135201796930183394, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_Name
+      value: Corals (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000923872
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722178489311694602, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -360
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c64f217a55e06c41bd7b6416b62b840, type: 3}
 --- !u!1 &1776740931
 GameObject:
   m_ObjectHideFlags: 0
@@ -47149,6 +47218,7 @@ SceneRoots:
   - {fileID: 585784201}
   - {fileID: 1395016432}
   - {fileID: 1166485194}
+  - {fileID: 1765994011}
   - {fileID: 2095848920}
   - {fileID: 805844659}
   - {fileID: 2083345233}

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
@@ -49,14 +48,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Players[0].GetComponent<BubbleMovement>().air < 0.5f) {
-            pirates_AudioSource.volume = 0;
-            tiny_AudioSource.volume = 1;
-        } else
-        {
-            pirates_AudioSource.volume = 1;
-            tiny_AudioSource.volume = 0;
-        }
+        //if (Players[0].GetComponent<BubbleMovement>().air < 0.5f) {
+        //    pirates_AudioSource.volume = 0;
+        //    tiny_AudioSource.volume = 1;
+        //} else
+        //{
+        //    pirates_AudioSource.volume = 1;
+        //    tiny_AudioSource.volume = 0;
+        //}
     }
 
     private void OnEnable()

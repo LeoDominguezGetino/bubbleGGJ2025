@@ -1,8 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using static DebugController;
-using UnityEngine.UIElements;
-using System;
 
 public class Pufferfish : MonoBehaviour
 {
