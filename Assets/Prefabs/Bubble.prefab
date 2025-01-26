@@ -743,6 +743,9 @@ MonoBehaviour:
   hat: {fileID: 3406088286111389313}
   leg: {fileID: 5412908043940945627}
   outline: {fileID: 164163098606763900}
+  wallsLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &3967815573184380237
 MonoBehaviour:
   m_ObjectHideFlags: 0

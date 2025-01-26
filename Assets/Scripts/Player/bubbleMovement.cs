@@ -41,6 +41,7 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] SpriteRenderer leg;
     [SerializeField] SpriteRenderer outline;
 
+    [SerializeField] LayerMask wallsLayer;
     private void Awake()
     {
         startpos = transform.position;
@@ -77,10 +78,13 @@ public class BubbleMovement : MonoBehaviour
             currentCoodown -= Time.deltaTime;
 
             reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
-
-            Vector3 Look = arrow.InverseTransformPoint(new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0) + transform.position);
-            float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
-            arrow.Rotate(0, 0, Angle-90);
+            if(rb.linearVelocity.magnitude > 0.1)
+            {
+                Vector3 Look = arrow.InverseTransformPoint(new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0) + transform.position);
+                float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
+                arrow.Rotate(0, 0, Angle - 90);
+            }
+            
 
             if (transform.position.y > waterLevelY) { rb.gravityScale = 1; }
             else { rb.gravityScale = 0; }
@@ -117,21 +121,25 @@ public class BubbleMovement : MonoBehaviour
 
     private void Dash()
     {
-        if (rb.linearVelocity.magnitude > 1 && currentCoodown < 0 && air > minAir)
+        if (currentCoodown < 0 && air > minAir)
         {
             if (pickedItem != null)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(dir), air * 2, 0);
-                Debug.DrawRay(transform.position, dir * air * 2, Color.yellow, 20);
-                if (hit) { return; }
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, (arrow.up), air * 2, wallsLayer);
+                Debug.DrawRay(transform.position, arrow.up * air * 2, Color.yellow, 20);
+                Debug.Log(hit);
+                if (hit) { Debug.Log("presente ostacolo"); return; }
+                else { Debug.Log("launch"); 
 
                 pickedItem.isPickedUp = false;
-                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * (air * 1.5f));
-                pickedItem.GetComponent<Rigidbody2D>().linearVelocity = dir * dashSpeed;
+                //Vector2 vertorSpawn = rb.linearVelocity.normalized;
+                pickedItem.transform.position = transform.position + (new Vector3(arrow.up.x, arrow.up.y, 0) * (air * 1.5f));
+                pickedItem.GetComponent<Rigidbody2D>().linearVelocity = arrow.up * dashSpeed;
                 pickedItem = null;
+            }
             } else
             {
-                rb.linearVelocity += (dir * dashSpeed);
+                rb.linearVelocity += ((Vector2)arrow.up * dashSpeed);
                 air -= dashAirCost;
             }
             currentCoodown = dashCooldown;
@@ -144,7 +152,7 @@ public class BubbleMovement : MonoBehaviour
     {
         if (pickedItem  == null) { return; }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, air * 2, 0);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, air * 2, wallsLayer);
         Debug.DrawRay(transform.position, Vector2.down * air * 2, Color.red, 20);
         if (hit) { return; }
 
