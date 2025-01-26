@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3120506550580070888, guid: a1c5d7112a8a3a44dbf266de51bbc55a, type: 3}
+  m_Sprite: {fileID: -3868546570983261773, guid: 9b1dae42c72fe034da31a26a27826840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -632,7 +632,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -8281523691588583080, guid: a1c5d7112a8a3a44dbf266de51bbc55a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4039216, g: 0.6862745, b: 0.30980393, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -739,6 +739,10 @@ MonoBehaviour:
   pickedItem: {fileID: 0}
   reflections: {fileID: 2398438713688081002}
   arrow: {fileID: 8783278751941202895}
+  arrowSpr: {fileID: 1449018456566969371}
+  hat: {fileID: 3406088286111389313}
+  leg: {fileID: 5412908043940945627}
+  outline: {fileID: 164163098606763900}
 --- !u!114 &3967815573184380237
 MonoBehaviour:
   m_ObjectHideFlags: 0

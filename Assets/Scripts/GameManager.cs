@@ -14,30 +14,18 @@ public class GameManager : MonoBehaviour
     public CinemachineCamera menuCamera;
     public CinemachineCamera inGameCamera;
 
-    
-    public bool inLanguageSelection;
-    public bool inMenu = false;
     public bool gameOver = false;
+
+    public Sprite[] playerBubbleSprites;
 
     public bool victory;
     private void Start()
     {
         Instance = this;
-        inLanguageSelection = true;
     }
 
     private void Update()
     {
-        if (inLanguageSelection)
-        {
-
-        }
-
-        if (inMenu)
-        {
-
-        }
-
         if (gameOver)
         {
             foreach (GameObject go in Players)
@@ -58,5 +46,11 @@ public class GameManager : MonoBehaviour
         Players.Add(playerInput.gameObject);
         cameraMultiTarget.Targets.Add(new CinemachineTargetGroup.Target());
         cameraMultiTarget.Targets[cameraMultiTarget.Targets.Count - 1].Object = playerInput.gameObject.transform;
+        playerInput.gameObject.GetComponent<BubbleMovement>().ApplyAppearance(Players.Count-1);
+    }
+
+    public void StartGame()
+    {
+        menuCamera.Priority = -1;
     }
 }

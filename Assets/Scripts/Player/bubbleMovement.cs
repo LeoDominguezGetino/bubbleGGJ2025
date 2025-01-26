@@ -36,6 +36,10 @@ public class BubbleMovement : MonoBehaviour
     // Graphic Elements
     [SerializeField] Transform reflections;
     [SerializeField] Transform arrow;
+    [SerializeField] SpriteRenderer arrowSpr;
+    [SerializeField] SpriteRenderer hat;
+    [SerializeField] SpriteRenderer leg;
+    [SerializeField] SpriteRenderer outline;
 
     private void Awake()
     {
@@ -150,4 +154,13 @@ public class BubbleMovement : MonoBehaviour
             GameManager.Instance.gameOver = true;
         }
     }
+
+    public void ApplyAppearance(int playerIndex)
+    {
+        arrowSpr.sprite = GameManager.Instance.playerBubbleSprites[0 + (playerIndex * 3)];
+        hat.sprite = GameManager.Instance.playerBubbleSprites[1 + (playerIndex * 3)];
+        leg.sprite = GameManager.Instance.playerBubbleSprites[2 + (playerIndex * 3)];
+        
+        if (playerIndex == 0) { outline.color = new Color32(255, 137, 44, 255); } else { outline.color = new Color32(103, 175, 79, 255); }
+            }
 }
