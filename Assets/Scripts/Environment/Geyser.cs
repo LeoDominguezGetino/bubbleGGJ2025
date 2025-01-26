@@ -15,8 +15,12 @@ public class Geyser : MonoBehaviour
     [SerializeField] float airInitialForce;
     [SerializeField] float airUpForce;
 
+    [SerializeField] AudioClip[] bubbleSounds;
+    AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(SpawnBubbles());;
     }
 
@@ -36,6 +40,9 @@ public class Geyser : MonoBehaviour
 
                 Destroy(airBubble.gameObject, bubblesLifetime);
             }
+
+            audioSource.clip = bubbleSounds[Random.Range(0, bubbleSounds.Length-1)];
+            audioSource.Play();
 
             yield return new WaitForSeconds(pauseTime);
         }
