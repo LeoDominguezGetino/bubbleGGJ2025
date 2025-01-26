@@ -27784,7 +27784,7 @@ MonoBehaviour:
   - {fileID: -3868546570983261773, guid: e8ff687cced957c458e5f08003e8dc68, type: 3}
   - {fileID: -903618015994684165, guid: e8ff687cced957c458e5f08003e8dc68, type: 3}
   victory: 0
-  successScreenAnimator: {fileID: 0}
+  successScreen: {fileID: 1752634603}
   playerStart: {x: 0, y: 0}
 --- !u!1001 &1556939507
 PrefabInstance:
