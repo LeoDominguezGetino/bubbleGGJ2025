@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        if(collision.gameObject.layer == 12)
+        if(otherCollider.gameObject.layer == 11)
         {
-            Destroy(collision.gameObject);
+            Destroy(otherCollider.gameObject);
             Debug.Log("VITTORIA");
             GameManager.Instance.victory = true;
         }

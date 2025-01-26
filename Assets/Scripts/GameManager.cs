@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public CinemachineCamera menuCamera;
     public CinemachineCamera inGameCamera;
 
-    public bool gameOver = false;
+    public bool gameOver;
 
     public Sprite[] playerBubbleSprites;
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        gameOver = false;
     }
 
     private void Update()

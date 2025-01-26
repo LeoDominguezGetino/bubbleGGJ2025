@@ -122,6 +122,7 @@ public class BubbleMovement : MonoBehaviour
             if (pickedItem != null)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(dir), air * 2, 0);
+                Debug.DrawRay(transform.position, dir * air * 2, Color.yellow, 20);
                 if (hit) { return; }
 
                 pickedItem.isPickedUp = false;
