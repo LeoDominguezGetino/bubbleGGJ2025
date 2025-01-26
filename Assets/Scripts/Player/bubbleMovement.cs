@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 
 public class BubbleMovement : MonoBehaviour
@@ -34,6 +35,7 @@ public class BubbleMovement : MonoBehaviour
 
     // Graphic Elements
     [SerializeField] Transform reflections;
+    [SerializeField] Transform arrow;
 
     private void Awake()
     {
@@ -72,6 +74,10 @@ public class BubbleMovement : MonoBehaviour
 
             reflections.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
 
+            Vector3 Look = arrow.InverseTransformPoint(new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 0) + transform.position);
+            float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
+            arrow.Rotate(0, 0, Angle-90);
+
             if (transform.position.y > waterLevelY) { rb.gravityScale = 1; }
             else { rb.gravityScale = 0; }
         }
@@ -107,19 +113,23 @@ public class BubbleMovement : MonoBehaviour
 
     private void Dash()
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(dir), air, 0);
+        if (hit) { return; }
+
         if (rb.linearVelocity.magnitude > 1 && currentCoodown < 0 && air > minAir)
         {
-            rb.linearVelocity += (dir * dashSpeed);
-            air -= dashAirCost;
-            currentCoodown = dashCooldown;
-
             if (pickedItem != null)
             {
                 pickedItem.isPickedUp = false;
-                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * -(air / 2 + pickedItem.minAir));
-                pickedItem.GetComponent<Rigidbody2D>().linearVelocity = dir * -dashSpeed;
+                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * (air / 2 + pickedItem.minAir));
+                pickedItem.GetComponent<Rigidbody2D>().linearVelocity = dir * dashSpeed;
                 pickedItem = null;
+            } else
+            {
+                rb.linearVelocity += (dir * dashSpeed);
+                air -= dashAirCost;
             }
+            currentCoodown = dashCooldown;
         }
     }
 
