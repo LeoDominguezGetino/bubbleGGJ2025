@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public bool victory;
 
-    public Animator successScreenAnimator;
+    public GameObject successScreen;
 
     public Vector2 playerStart;
     bool playersJoined = false;
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         }
 
         menuCamera.Priority = 1;
-        successScreenAnimator.Play("",0);
+        successScreen.SetActive(true);
     }
 
     public void Replay()
