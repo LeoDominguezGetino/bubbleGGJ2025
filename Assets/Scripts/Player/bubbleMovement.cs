@@ -33,6 +33,7 @@ public class BubbleMovement : MonoBehaviour
     // PickUp Values
     public Item pickedItem;
 
+    [SerializeField] float airModifier = 1; // (9/10);
     // Graphic Elements
     [SerializeField] Transform reflections;
     [SerializeField] Transform arrow;
@@ -125,15 +126,15 @@ public class BubbleMovement : MonoBehaviour
         {
             if (pickedItem != null)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, (arrow.up), (air/10)*9, wallsLayer);
-                Debug.DrawRay(transform.position, arrow.up * (air/10)*9, Color.yellow, 20);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, (arrow.up), (air * airModifier), wallsLayer);
+                Debug.DrawRay(transform.position, arrow.up * (air * airModifier), Color.yellow, 20);
                 Debug.Log(hit);
                 if (hit) { Debug.Log("presente ostacolo"); return; }
                 else { Debug.Log("launch"); 
 
                 pickedItem.isPickedUp = false;
                 //Vector2 vertorSpawn = rb.linearVelocity.normalized;
-                pickedItem.transform.position = transform.position + (new Vector3(arrow.up.x, arrow.up.y, 0) * ((air/10)*9));
+                pickedItem.transform.position = transform.position + (new Vector3(arrow.up.x, arrow.up.y, 0) * ((air * airModifier)));
                 pickedItem.GetComponent<Rigidbody2D>().linearVelocity = arrow.up * dashSpeed;
                 pickedItem = null;
             }
@@ -152,12 +153,12 @@ public class BubbleMovement : MonoBehaviour
     {
         if (pickedItem  == null) { return; }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, (air / 10) * 9, wallsLayer);
-        Debug.DrawRay(transform.position, Vector2.down * (air / 10) * 9, Color.red, 20);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, (air * airModifier), wallsLayer);
+        Debug.DrawRay(transform.position, Vector2.down * (air * airModifier), Color.red, 20);
         if (hit) { return; }
 
         pickedItem.isPickedUp = false;
-        pickedItem.transform.position = transform.position + (Vector3.down * (air / 10) * 9);
+        pickedItem.transform.position = transform.position + (Vector3.down * (air * airModifier));
         pickedItem = null;
     }
 
