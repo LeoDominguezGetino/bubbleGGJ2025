@@ -8,6 +8,12 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    AudioSource m_AudioSource;
+    public AudioSource pirates_AudioSource;
+    public AudioSource tiny_AudioSource;
+    public AudioClip menuMusic;
+    public AudioClip gameMusic;
+
     public static GameManager Instance;
 
     public List<GameObject> Players;
@@ -28,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         gameOver = false;
+
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -39,6 +47,15 @@ public class GameManager : MonoBehaviour
                 go.GetComponent<BubbleMovement>().Respawn();
                 gameOver = false;
             }
+        }
+
+        if (Players[0].GetComponent<BubbleMovement>().air < 0.5f) {
+            pirates_AudioSource.volume = 0;
+            tiny_AudioSource.volume = 1;
+        } else
+        {
+            pirates_AudioSource.volume = 1;
+            tiny_AudioSource.volume = 0;
         }
     }
 
@@ -61,6 +78,12 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(JoinPlayers());
         menuCamera.Priority = -1;
+
+        m_AudioSource.Stop();
+        m_AudioSource.clip = gameMusic;
+        m_AudioSource.Play();
+        pirates_AudioSource.Play();
+        tiny_AudioSource.Play();
     }
 
     private IEnumerator JoinPlayers()
