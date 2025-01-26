@@ -4,6 +4,7 @@ using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         GetComponent<PlayerInputManager>().onPlayerJoined += OnPlayerJoined;
     }
 
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Players.Add(playerInput.gameObject);
@@ -53,9 +55,16 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);
-        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
+        StartCoroutine(SpawnPlayers());
 
         menuCamera.Priority = -1;
     }
+
+    private IEnumerator SpawnPlayers()
+    {
+        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
+        yield return new WaitForSeconds(1);
+        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);    
+    }
+
 }
