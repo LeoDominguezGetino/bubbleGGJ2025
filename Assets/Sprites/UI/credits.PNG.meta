@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 1958f964721138d42acb603d156766f1
+guid: 2141aa5e8068bf9418f05cb6d25a332c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7686118584151093174
-    second: under_the_C#_0
-  - first:
-      213: -5076220574672145318
-    second: under_the_C#_1
-  - first:
-      213: -5929342968820734853
-    second: under_the_C#_2
-  - first:
-      213: 3202074387820329175
-    second: under_the_C#_3
-  - first:
-      213: -2774471893453599686
-    second: under_the_C#_4
+      213: -3560698593848636649
+    second: credits_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -138,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: under_the_C#_0
+      name: credits_0
       rect:
         serializedVersion: 2
-        x: 78
-        y: 406
-        width: 1103
-        height: 1556
+        x: 0
+        y: 0
+        width: 1952
+        height: 1464
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,96 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a40552adedb655590800000000000000
-      internalID: -7686118584151093174
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: under_the_C#_1
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 1700
-        width: 307
-        height: 585
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a5433254844ad89b0800000000000000
-      internalID: -5076220574672145318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: under_the_C#_2
-      rect:
-        serializedVersion: 2
-        x: 388
-        y: 1893
-        width: 414
-        height: 392
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b74eaff1cfdb6bda0800000000000000
-      internalID: -5929342968820734853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: under_the_C#_3
-      rect:
-        serializedVersion: 2
-        x: 797
-        y: 1951
-        width: 207
-        height: 330
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7d8386eb0bd007c20800000000000000
-      internalID: 3202074387820329175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: under_the_C#_4
-      rect:
-        serializedVersion: 2
-        x: 950
-        y: 68
-        width: 1435
-        height: 2223
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a3c846f33881f79d0800000000000000
-      internalID: -2774471893453599686
+      spriteID: 71b4b698e7bd59ec0800000000000000
+      internalID: -3560698593848636649
       vertices: []
       indices: 
       edges: []
@@ -251,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -260,12 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      under_the_C#_0: -7686118584151093174
-      under_the_C#_1: -5076220574672145318
-      under_the_C#_2: -5929342968820734853
-      under_the_C#_3: 3202074387820329175
-      under_the_C#_4: -2774471893453599686
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

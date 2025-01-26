@@ -4,11 +4,13 @@ public class Ship : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        if(otherCollider.gameObject.layer == 11)
+        Debug.Log("Ship Collided");
+
+        if (otherCollider.transform.name == "Perla")
         {
-            Destroy(otherCollider.gameObject);
-            Debug.Log("VITTORIA");
-            GameManager.Instance.victory = true;
+            Destroy(otherCollider.gameObject, 1);
+            GameManager.Instance.Success();
+            Debug.Log("Pearl retrieved!");
         }
     }
 }

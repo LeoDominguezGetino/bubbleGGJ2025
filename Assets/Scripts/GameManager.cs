@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     public Sprite[] playerBubbleSprites;
 
     public bool victory;
+
+    public Animator successScreenAnimator;
+
+    public Vector2 playerStart;
+    bool playersJoined = false;
+
     private void Start()
     {
         Instance = this;
@@ -55,16 +61,50 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(SpawnPlayers());
+        if (!playersJoined) { StartCoroutine(JoinPlayers()); }
+        else { StartCoroutine(SpawnPlayers()); }
+        
 
         menuCamera.Priority = -1;
     }
 
-    private IEnumerator SpawnPlayers()
+    private IEnumerator JoinPlayers()
     {
         PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
         yield return new WaitForSeconds(1);
         PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);    
+    }
+
+    private IEnumerator SpawnPlayers()
+    {
+        foreach (var player in Players)
+        {
+            player.transform.position = playerStart;
+            yield return new WaitForSeconds(1);
+            player.gameObject.SetActive(true);
+        }
+    }
+
+    public void Success()
+    {
+        foreach (var player in Players)
+        {
+            player.gameObject.SetActive(false);
+        }
+
+        menuCamera.Priority = 1;
+        successScreenAnimator.Play("",0);
+    }
+
+    public void Replay()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
 }
