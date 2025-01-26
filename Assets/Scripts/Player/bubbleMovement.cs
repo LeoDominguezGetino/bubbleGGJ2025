@@ -125,15 +125,15 @@ public class BubbleMovement : MonoBehaviour
         {
             if (pickedItem != null)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, (arrow.up), (air/4)*3, wallsLayer);
-                Debug.DrawRay(transform.position, arrow.up * (air/4)*3, Color.yellow, 20);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, (arrow.up), (air/6)*5, wallsLayer);
+                Debug.DrawRay(transform.position, arrow.up * (air/6)*5, Color.yellow, 20);
                 Debug.Log(hit);
                 if (hit) { Debug.Log("presente ostacolo"); return; }
                 else { Debug.Log("launch"); 
 
                 pickedItem.isPickedUp = false;
                 //Vector2 vertorSpawn = rb.linearVelocity.normalized;
-                pickedItem.transform.position = transform.position + (new Vector3(arrow.up.x, arrow.up.y, 0) * (air));
+                pickedItem.transform.position = transform.position + (new Vector3(arrow.up.x, arrow.up.y, 0) * ((air/6)*5));
                 pickedItem.GetComponent<Rigidbody2D>().linearVelocity = arrow.up * dashSpeed;
                 pickedItem = null;
             }
