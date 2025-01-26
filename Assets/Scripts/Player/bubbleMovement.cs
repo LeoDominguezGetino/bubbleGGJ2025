@@ -13,12 +13,14 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] int waterLevelY;
 
     //bool gameOver;
+    Vector2 startpos;
 
     // Air Values
     public float air = 1;
     [SerializeField] float airLossOverTime = 0.01f;
     [SerializeField] float airDeflate = 0.5f;
     [SerializeField] float maxAir = 2.5f;
+    [SerializeField] float minAir = 0.3f;
     float isDeflating;
 
     // Dash Values
@@ -35,6 +37,7 @@ public class BubbleMovement : MonoBehaviour
 
     private void Awake()
     {
+        startpos = transform.position;
         //GameManager.Instance.gameOver = false;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,15 +54,16 @@ public class BubbleMovement : MonoBehaviour
         isDeflating = inputValue.ReadValue<float>();
     }
 
+    public void Respawn()
+    {
+        Drop();
+        transform.position = startpos;
+        rb.gravityScale = 1.0f;
+        air = 1;
+    }
+
     void Update()
     {
-        if (GameManager.Instance.gameOver == true)
-        {
-            Destroy(this.gameObject);
-            //INSERIRE IMMAGINI / ANIMAZIONE GAME OVER
-            Debug.Log("GAME OVER");
-
-        }
         if (GameManager.Instance.gameOver == false)
         {
             updateSize();
@@ -87,15 +91,12 @@ public class BubbleMovement : MonoBehaviour
 
     void updateSize()
     {
-        if (air <= 0)
-        {
-            GameManager.Instance.gameOver = true;
-        }
-        if (air > 0)
+        if (air > minAir)
         {
             air -= airDeflate * isDeflating * Time.deltaTime;
             air -= airLossOverTime * Time.deltaTime;
-        }
+        } else { air = minAir; }
+        
 
         if (air > maxAir) { air = maxAir; }
 
@@ -106,7 +107,7 @@ public class BubbleMovement : MonoBehaviour
 
     private void Dash()
     {
-        if (rb.linearVelocity.magnitude > 1 && currentCoodown < 0)
+        if (rb.linearVelocity.magnitude > 1 && currentCoodown < 0 && air > minAir)
         {
             rb.linearVelocity += (dir * dashSpeed);
             air -= dashAirCost;
@@ -115,7 +116,7 @@ public class BubbleMovement : MonoBehaviour
             if (pickedItem != null)
             {
                 pickedItem.isPickedUp = false;
-                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * -(air / 2 + pickedItem.minAir / 2));
+                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * -(air / 2 + pickedItem.minAir));
                 pickedItem.GetComponent<Rigidbody2D>().linearVelocity = dir * -dashSpeed;
                 pickedItem = null;
             }
@@ -136,7 +137,6 @@ public class BubbleMovement : MonoBehaviour
     {
         if (collision.gameObject.layer == 10)
         {
-            Debug.Log("collision detected with hostile");
             GameManager.Instance.gameOver = true;
         }
     }

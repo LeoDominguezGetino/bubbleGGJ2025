@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPickedUp: 0
-  minAir: 2
+  minAir: 1.5
 --- !u!212 &5848748595794299436
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -19,14 +19,11 @@ public class Item : MonoBehaviour
     {
         bubble = collision.gameObject.GetComponent<BubbleMovement>();
 
-        if (bubble) { 
+        if (bubble != null) { 
             
             if (bubble.air >= minAir) {
                 isPickedUp = true;
                 bubble.pickedItem = this;
-
-                coll.enabled = false;
-                rb.bodyType = RigidbodyType2D.Kinematic;
             }            
         }
     }
@@ -35,16 +32,20 @@ public class Item : MonoBehaviour
     {
         if (isPickedUp)
         {
-            if (bubble) {
+            if (bubble != null) {
+
                 transform.position = bubble.transform.position;
+                coll.enabled = false;
+                rb.bodyType = RigidbodyType2D.Kinematic;
 
                 if (bubble.air <= minAir) { isPickedUp = false; bubble.pickedItem = null; }
-            }
+            } else { isPickedUp = false; }
             
         } else
         {
             coll.enabled = true;
             rb.bodyType = RigidbodyType2D.Dynamic;
+            bubble = null;
         }
     }
 }

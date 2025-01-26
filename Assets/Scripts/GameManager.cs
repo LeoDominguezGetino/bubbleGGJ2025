@@ -40,8 +40,11 @@ public class GameManager : MonoBehaviour
 
         if (gameOver)
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //PlayerInputManager.JoinPlayer(InputDevice[]);
+            foreach (GameObject go in Players)
+            {
+                go.GetComponent<BubbleMovement>().Respawn();
+                gameOver = false;
+            }
         }
     }
 
