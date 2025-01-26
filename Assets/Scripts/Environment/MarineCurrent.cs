@@ -3,6 +3,7 @@ using UnityEngine;
 public class MarineCurrent : MonoBehaviour
 {
     public bool isActivated = true;
+    public ParticleSystem particles;
 
     [SerializeField] float maxDistance = 5;
     [SerializeField] float wide = 1;
@@ -18,6 +19,8 @@ public class MarineCurrent : MonoBehaviour
         transform.localScale = new Vector3(distance / 2, wide / 2, 0);
 
         GetComponent<AreaEffector2D>().enabled = isActivated;
+
+        if (isActivated) { particles.Play(); } else { particles.Stop(); };
     }
 
     public void Activate() { isActivated = true; }

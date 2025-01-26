@@ -11,7 +11,7 @@ public class Lever : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(handle.localRotation.z)*100 > 45)
+        if (Mathf.Abs(handle.localRotation.z)*100 > 30)
         {
             outline.gameObject.SetActive(true);
             onActivated.Invoke();
