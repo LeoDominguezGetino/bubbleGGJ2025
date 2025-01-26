@@ -117,15 +117,15 @@ public class BubbleMovement : MonoBehaviour
 
     private void Dash()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(dir), air, 0);
-        if (hit) { return; }
-
         if (rb.linearVelocity.magnitude > 1 && currentCoodown < 0 && air > minAir)
         {
             if (pickedItem != null)
             {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(dir), air * 2, 0);
+                if (hit) { return; }
+
                 pickedItem.isPickedUp = false;
-                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * (air / 2 + pickedItem.minAir));
+                pickedItem.transform.position = transform.position + (new Vector3(dir.x, dir.y, 0) * (air * 1.5f));
                 pickedItem.GetComponent<Rigidbody2D>().linearVelocity = dir * dashSpeed;
                 pickedItem = null;
             } else
@@ -142,8 +142,13 @@ public class BubbleMovement : MonoBehaviour
     void Drop()
     {
         if (pickedItem  == null) { return; }
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, air * 2, 0);
+        Debug.DrawRay(transform.position, Vector2.down * air * 2, Color.red, 20);
+        if (hit) { return; }
+
         pickedItem.isPickedUp = false;
-        pickedItem.transform.position = transform.position + (Vector3.down * (air / 2 + pickedItem.minAir / 2));
+        pickedItem.transform.position = transform.position + (Vector3.down * (air * 1.5f));
         pickedItem = null;
     }
 
@@ -161,6 +166,8 @@ public class BubbleMovement : MonoBehaviour
         hat.sprite = GameManager.Instance.playerBubbleSprites[1 + (playerIndex * 3)];
         leg.sprite = GameManager.Instance.playerBubbleSprites[2 + (playerIndex * 3)];
         
-        if (playerIndex == 0) { outline.color = new Color32(255, 137, 44, 255); } else { outline.color = new Color32(103, 175, 79, 255); }
-            }
+        if (playerIndex == 0) { outline.color = new Color32(255, 137, 44, 255); }
+        else if(playerIndex == 1) { outline.color = new Color32(103, 175, 79, 255); }
+        else { outline.color = new Color32(252, 90, 249, 255); }
+    }
 }

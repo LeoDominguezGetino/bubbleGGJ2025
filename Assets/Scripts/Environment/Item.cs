@@ -21,7 +21,7 @@ public class Item : MonoBehaviour
 
         if (bubble != null) { 
             
-            if (bubble.air >= minAir) {
+            if (bubble.air >= minAir && bubble.pickedItem == null) {
                 isPickedUp = true;
                 bubble.pickedItem = this;
             }            
@@ -38,7 +38,7 @@ public class Item : MonoBehaviour
                 coll.enabled = false;
                 rb.bodyType = RigidbodyType2D.Kinematic;
 
-                if (bubble.air <= minAir) { isPickedUp = false; bubble.pickedItem = null; }
+                if (bubble.air < minAir) { isPickedUp = false; bubble.pickedItem = null; }
             } else { isPickedUp = false; }
             
         } else
