@@ -96,7 +96,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
         yield return new WaitForSeconds(1);
-        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);    
+        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);
+        GetComponent<PlayerInputManager>().EnableJoining();
     }
 
     public void Success()

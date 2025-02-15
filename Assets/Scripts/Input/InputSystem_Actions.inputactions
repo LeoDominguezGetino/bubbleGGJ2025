@@ -340,7 +340,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad",
                     "action": "Join",
                     "isComposite": false,
                     "isPartOfComposite": false
