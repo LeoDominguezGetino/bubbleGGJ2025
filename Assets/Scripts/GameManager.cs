@@ -4,6 +4,9 @@ using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Localization.Settings;
+using System.Runtime.CompilerServices;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
     public bool victory;
 
     public Animator successScreenAnimator;
+
+    bool selectingLocale = false;
 
     private void Start()
     {
@@ -75,6 +80,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
 
+        SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
+
         StartCoroutine(JoinPlayers());
         menuCamera.Priority = -1;
 
@@ -114,4 +121,17 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    IEnumerator SetLocale(int _localeID)
+    {
+        selectingLocale = true;
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
+        selectingLocale = false;
+    }
+
+    public void ChangeLocale(int localeID)
+    {
+        if (selectingLocale) { return; }
+        StartCoroutine(SetLocale(localeID));
+    }
 }
