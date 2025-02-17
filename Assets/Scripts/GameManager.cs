@@ -8,6 +8,8 @@ using UnityEngine.Localization.Settings;
 using System.Runtime.CompilerServices;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using Unity.Netcode;
+using UnityEditor.PackageManager;
 
 
 public class GameManager : MonoBehaviour
@@ -180,4 +182,18 @@ public class GameManager : MonoBehaviour
         if (selectingLocale) { return; }
         StartCoroutine(SetLocale(localeID));
     }
+
+    public void StartHost()
+    {
+        NetworkManager.Singleton.Shutdown();
+        NetworkManager.Singleton.StartHost();
+    }
+
+
+    public void StartClient()
+    {
+        NetworkManager.Singleton.Shutdown();
+        NetworkManager.Singleton.StartClient();
+    }
+
 }

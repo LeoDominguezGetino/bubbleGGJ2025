@@ -26,11 +26,11 @@ MonoBehaviour:
       - NoCost
     - QuestionId: NetcodeArchitecture
       Answers:
-      - NoNetcode
+      - ClientServer
     - QuestionId: PlayerCount
       Answers:
       - 8
   Preset: 11
   SelectedSolutions:
-    SelectedHostingModel: 3
-    SelectedNetcodeSolution: 4
+    SelectedHostingModel: 4
+    SelectedNetcodeSolution: 1

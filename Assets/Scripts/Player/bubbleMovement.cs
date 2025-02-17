@@ -1,9 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
 
-public class BubbleMovement : MonoBehaviour
+public class BubbleMovement : NetworkBehaviour
 {
     // Movement Values
     Rigidbody2D rb;
@@ -12,7 +13,6 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] float acceleration = 0.5f;
     [SerializeField] int waterLevelY;
 
-    //bool gameOver;
     Vector2 startpos;
 
     // Air Values
@@ -31,8 +31,8 @@ public class BubbleMovement : MonoBehaviour
 
     // PickUp Values
     public Item pickedItem;
+    [SerializeField] float airModifier = 1;
 
-    [SerializeField] float airModifier = 1; // (9/10);
     // Graphic Elements
     [SerializeField] Transform reflections;
     [SerializeField] Transform arrow;
@@ -42,10 +42,10 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] SpriteRenderer outline;
 
     [SerializeField] LayerMask wallsLayer;
+
     private void Awake()
     {
         startpos = transform.position;
-        //GameManager.Instance.gameOver = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -95,12 +95,7 @@ public class BubbleMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (transform.position.y > waterLevelY) { return; }
-
-        if (rb.linearVelocity.magnitude < maxSpeed)
-        {
-            //rb.AddForce(dir * acceleration);
-            rb.linearVelocity += (dir * acceleration);
-        }
+        if (rb.linearVelocity.magnitude < maxSpeed) { rb.linearVelocity += (dir * acceleration); }
     }
 
     void updateSize()
@@ -132,7 +127,6 @@ public class BubbleMovement : MonoBehaviour
                 else { Debug.Log("launch"); 
 
                 pickedItem.isPickedUp = false;
-                //Vector2 vertorSpawn = rb.linearVelocity.normalized;
                 pickedItem.transform.position = transform.position + (new Vector3(arrow.up.x, arrow.up.y, 0) * ((air * airModifier)));
                 pickedItem.GetComponent<Rigidbody2D>().linearVelocity = arrow.up * dashSpeed;
                 pickedItem = null;
