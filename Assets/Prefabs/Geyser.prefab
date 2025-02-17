@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.8, y: -4.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.29215336, y: 0.29215336, z: 0.29215336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airCollectible: {fileID: 772973915693899502, guid: f34578e18c883f3499fd778ada8c1cdb, type: 3}
-  bubblesRate: 30
-  emittingTime: 1
-  pauseTime: 2
-  bubblesLifetime: 1.5
+  bubblesRate: 2
+  emittingTime: 2
+  pauseTime: 0
+  bubblesLifetime: 2
   coneWith: 0.25
-  airAmount: 0.1
-  airInitialForce: 5
-  airUpForce: 1
+  airAmount: 0.25
+  airInitialForce: 0
+  airUpForce: 0.25

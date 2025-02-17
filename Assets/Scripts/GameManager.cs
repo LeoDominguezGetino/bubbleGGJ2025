@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public bool victory;
 
-    public Animator successScreenAnimator;
+    public GameObject successScreen;
 
     bool selectingLocale = false;
 
@@ -141,15 +141,19 @@ public class GameManager : MonoBehaviour
         GetComponent<PlayerInputManager>().EnableJoining();
     }
 
-    public void Success()
+    public void LevelCleared()
     {
         foreach (var player in Players)
         {
-            player.gameObject.SetActive(false);
+            Destroy(player);            
         }
+        Players.Clear();
+        cameraMultiTarget.Targets.Clear();
 
         menuCamera.Priority = 1;
-        successScreenAnimator.Play("",0);
+        successScreen.SetActive(true);
+
+        SceneManager.UnloadSceneAsync("Level1");
     }
 
     public void Replay()

@@ -9,7 +9,7 @@ public class Ship : MonoBehaviour
         if (otherCollider.transform.name == "Perla")
         {
             Destroy(otherCollider.gameObject, 1);
-            GameManager.Instance.Success();
+            GameManager.Instance.LevelCleared();
             Debug.Log("Pearl retrieved!");
         }
     }
