@@ -31,6 +31,14 @@ MonoBehaviour:
     m_Key: quitKey
     m_Metadata:
       m_Items: []
+  - m_Id: 49713307799552
+    m_Key: chooseLevelKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49851271041024
+    m_Key: startKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

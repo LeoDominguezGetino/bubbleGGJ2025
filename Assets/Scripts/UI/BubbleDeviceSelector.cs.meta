@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7035e331f36280f4aa3f44aea5a57b64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wasdIcon: {fileID: 21300000, guid: e04c4c75fed222a4dbfbcb72fb7723ac, type: 3}
+  - arrowsIcon: {fileID: 21300000, guid: 495956e6793abfa44a03bb666195068b, type: 3}
+  - gamepadIcon: {fileID: -4632600201832103944, guid: 0e4d16615c6a559428615c06a053fdaf, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

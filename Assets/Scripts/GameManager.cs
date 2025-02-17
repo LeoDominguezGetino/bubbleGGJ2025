@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Localization.Settings;
 using System.Runtime.CompilerServices;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class GameManager : MonoBehaviour
@@ -34,6 +36,10 @@ public class GameManager : MonoBehaviour
 
     bool selectingLocale = false;
 
+    public List<BubbleDeviceSelector> deviceSelectors;
+    [SerializeField] BubbleDeviceSelector bubbleDevicePrefab;
+    [SerializeField] Transform bubbleDeviceParent;
+
     private void Start()
     {
         Instance = this;
@@ -61,6 +67,39 @@ public class GameManager : MonoBehaviour
         //    pirates_AudioSource.volume = 1;
         //    tiny_AudioSource.volume = 0;
         //}
+
+        
+    }
+
+    public void RefreshDevices()
+    {
+        foreach (BubbleDeviceSelector bubble in  deviceSelectors)
+        {
+            Destroy(bubble.gameObject);
+        }
+
+        deviceSelectors.Clear();
+
+        foreach (var device in InputSystem.devices)
+        {
+            if (device is Keyboard)
+            {
+                deviceSelectors.Add(Instantiate(bubbleDevicePrefab, bubbleDeviceParent));
+                deviceSelectors[deviceSelectors.Count-1].controlScheme = "WASD";
+                deviceSelectors[deviceSelectors.Count-1].device = device;
+
+                deviceSelectors.Add(Instantiate(bubbleDevicePrefab, bubbleDeviceParent));
+                deviceSelectors[deviceSelectors.Count - 1].controlScheme = "Arrows";
+                deviceSelectors[deviceSelectors.Count - 1].device = device;
+            }
+            else if (device is Gamepad)
+            {
+                deviceSelectors.Add(Instantiate(bubbleDevicePrefab, bubbleDeviceParent));
+                deviceSelectors[deviceSelectors.Count - 1].controlScheme = "Gamepad";
+                deviceSelectors[deviceSelectors.Count - 1].device = device;
+            }
+            else { continue; }
+        }
     }
 
     private void OnEnable()
@@ -94,9 +133,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator JoinPlayers()
     {
-        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
-        yield return new WaitForSeconds(1);
-        PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: "Arrows", pairWithDevice: Keyboard.current);
+        foreach (BubbleDeviceSelector bubble in deviceSelectors)
+        {
+            PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: bubble.controlScheme, pairWithDevice: bubble.device);
+            yield return new WaitForSeconds(1);
+        }        
         GetComponent<PlayerInputManager>().EnableJoining();
     }
 
