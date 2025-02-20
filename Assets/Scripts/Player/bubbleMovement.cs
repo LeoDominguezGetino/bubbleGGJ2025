@@ -42,6 +42,8 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] SpriteRenderer outline;
 
     [SerializeField] LayerMask wallsLayer;
+    int playerIndex;
+
     private void Awake()
     {
         startpos = transform.position;
@@ -167,11 +169,20 @@ public class BubbleMovement : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             GameManager.Instance.gameOver = true;
+
+            string hazard = "coral";
+            if (collision.gameObject.GetComponent<Swordfish>() != null) { hazard = "swordfish"; }
+            if (collision.gameObject.GetComponent<Pufferfish>() != null) { hazard = "pufferfish"; }
+
+            GameManager.Instance.deathScreen.gameObject.SetActive(true);
+            GameManager.Instance.deathScreen.DeathScreen(playerIndex, hazard);
         }
     }
 
-    public void ApplyAppearance(int playerIndex)
+    public void ApplyAppearance(int index)
     {
+        playerIndex = index;
+
         arrowSpr.sprite = GameManager.Instance.playerBubbleSprites[0 + (playerIndex * 3)];
         hat.sprite = GameManager.Instance.playerBubbleSprites[1 + (playerIndex * 3)];
         leg.sprite = GameManager.Instance.playerBubbleSprites[2 + (playerIndex * 3)];

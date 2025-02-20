@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject languageScreen;
     [SerializeField] GameObject successScreen;
     [SerializeField] GameObject pauseScreen;
+    public DeathPanel deathScreen;
 
     private void Start()
     {
