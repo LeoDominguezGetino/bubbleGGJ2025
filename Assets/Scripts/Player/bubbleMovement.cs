@@ -20,7 +20,7 @@ public class BubbleMovement : MonoBehaviour
     [SerializeField] float airLossOverTime = 0.01f;
     [SerializeField] float airDeflate = 0.5f;
     [SerializeField] float maxAir = 2.5f;
-    [SerializeField] float minAir = 0.3f;
+    [SerializeField] float minAir = 0.7f;
     float isDeflating;
 
     // Dash Values
@@ -147,6 +147,7 @@ public class BubbleMovement : MonoBehaviour
     }
 
     public void OnDrop(InputAction.CallbackContext inputValue) { Drop(); }
+    public void OnPause(InputAction.CallbackContext inputValue) { GameManager.Instance.PauseGame(); }
 
     void Drop()
     {

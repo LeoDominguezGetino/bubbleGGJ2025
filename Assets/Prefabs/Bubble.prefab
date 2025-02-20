@@ -732,11 +732,12 @@ MonoBehaviour:
   airLossOverTime: 0
   airDeflate: 0.5
   maxAir: 2.5
-  minAir: 0.3
+  minAir: 0.6
   dashSpeed: 10
   dashAirCost: 0.5
   dashCooldown: 1
   pickedItem: {fileID: 0}
+  airModifier: 1
   reflections: {fileID: 2398438713688081002}
   arrow: {fileID: 8783278751941202895}
   arrowSpr: {fileID: 1449018456566969371}
@@ -887,6 +888,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bb6d7e59-60dc-4df3-9111-e4208e5c9b0a
     m_ActionName: 'Player/Join[/Keyboard/w,/Keyboard/upArrow,/XInputControllerWindows/leftStick/up]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5958682601508602296}
+        m_TargetAssemblyTypeName: BubbleMovement, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b3c10172-e2e4-4601-9691-02830f63e6db
+    m_ActionName: 'Player/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: WASD
   m_DefaultActionMap: Player

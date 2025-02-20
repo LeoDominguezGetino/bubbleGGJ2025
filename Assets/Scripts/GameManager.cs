@@ -25,20 +25,26 @@ public class GameManager : MonoBehaviour
     public CinemachineTargetGroup cameraMultiTarget;
     public CinemachineCamera menuCamera;
     public CinemachineCamera inGameCamera;
+    public CinemachineCamera interactableCamera;
 
     public bool gameOver;
+        bool gameStarted = false;
 
     public Sprite[] playerBubbleSprites;
 
     public bool victory;
-
-    public GameObject successScreen;
-
+    
     bool selectingLocale = false;
 
     public List<BubbleDeviceSelector> deviceSelectors;
     [SerializeField] BubbleDeviceSelector bubbleDevicePrefab;
     [SerializeField] Transform bubbleDeviceParent;
+
+    [SerializeField] GameObject mainMenuScreen;
+    [SerializeField] GameObject gameOptionsScreen;
+    [SerializeField] GameObject languageScreen;
+    [SerializeField] GameObject successScreen;
+    [SerializeField] GameObject pauseScreen;
 
     private void Start()
     {
@@ -118,6 +124,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (gameStarted) return;
+
+        gameStarted = true;
+
+        gameOptionsScreen.SetActive(false);
+        languageScreen.SetActive(false);
+        mainMenuScreen.SetActive(false);
+        successScreen.SetActive(false);
 
         SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
 
@@ -138,7 +152,7 @@ public class GameManager : MonoBehaviour
             PlayerInput.Instantiate(GetComponent<PlayerInputManager>().playerPrefab, controlScheme: bubble.controlScheme, pairWithDevice: bubble.device);
             yield return new WaitForSeconds(1);
         }        
-        GetComponent<PlayerInputManager>().EnableJoining();
+        //GetComponent<PlayerInputManager>().EnableJoining();
     }
 
     public void LevelCleared()
@@ -154,6 +168,7 @@ public class GameManager : MonoBehaviour
         successScreen.SetActive(true);
 
         SceneManager.UnloadSceneAsync("Level1");
+        gameStarted = false;
     }
 
     public void Replay()
@@ -179,5 +194,43 @@ public class GameManager : MonoBehaviour
     {
         if (selectingLocale) { return; }
         StartCoroutine(SetLocale(localeID));
+    }
+
+    public void PauseGame()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ContinueGame()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void ToMenu()
+    {
+        pauseScreen.SetActive(false);
+        mainMenuScreen.SetActive(true);
+        Time.timeScale = 1;
+
+        StartCoroutine(Unload());
+
+        menuCamera.Priority = 1;        
+        gameStarted = false;
+    }
+
+    IEnumerator Unload()
+    {
+        yield return new WaitForSeconds(2f);
+
+        foreach (var player in Players)
+        {
+            Destroy(player);
+        }
+        Players.Clear();
+        cameraMultiTarget.Targets.Clear();
+
+        SceneManager.UnloadSceneAsync("Level1");
     }
 }

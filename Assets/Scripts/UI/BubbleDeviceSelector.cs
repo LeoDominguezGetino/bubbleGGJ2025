@@ -19,4 +19,10 @@ public class BubbleDeviceSelector : MonoBehaviour
         else if (controlScheme == "Arrows") { controls.sprite = arrowsIcon; }
         else { controls.sprite = gamepadIcon; }
     }
+
+    public void RemoveDevice()
+    {
+        GameManager.Instance.deviceSelectors.Remove(this);
+        Destroy(this.gameObject);
+    }
 }
