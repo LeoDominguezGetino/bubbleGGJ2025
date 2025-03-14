@@ -246,6 +246,6 @@ public class GameManager : MonoBehaviour
         Players.Clear();
         cameraMultiTarget.Targets.Clear();
 
-        SceneManager.UnloadSceneAsync("Level1");
+        SceneManager.UnloadSceneAsync(levels[levelIndex]);
     }
 }
