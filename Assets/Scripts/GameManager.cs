@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         menuCamera.Priority = 1;
         successScreen.SetActive(true);
 
-        SceneManager.UnloadSceneAsync("Level1");
+        SceneManager.UnloadSceneAsync(levels[levelIndex]);
         gameStarted = false;
     }
 
