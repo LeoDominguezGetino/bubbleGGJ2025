@@ -21,6 +21,10 @@ public class MarineCurrent : MonoBehaviour
         GetComponent<AreaEffector2D>().enabled = isActivated;
 
         if (isActivated) { particles.Play(); } else { particles.Stop(); };
+        particles.startSpeed = maxDistance * 2;
+        var sh = particles.shape;
+        sh.scale = new Vector3(wide * 2, 1, 1);
+        particles.emissionRate = 25 * wide;
     }
 
     public void Activate() { isActivated = true; }

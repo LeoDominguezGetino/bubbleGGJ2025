@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public string[] levels;
     public int levelIndex;
+    [SerializeField] Text levelText;
 
     private void Start()
     {
@@ -181,6 +182,8 @@ public class GameManager : MonoBehaviour
 
         if (levelIndex >= levels.Length) { levelIndex  = 0; }
         else if (levelIndex < 0) { levelIndex = levels.Length - 1; }
+
+        levelText.text = levels[levelIndex].ToString();
     }
 
     public void Replay()
