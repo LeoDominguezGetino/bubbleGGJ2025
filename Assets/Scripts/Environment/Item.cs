@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Item : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Item : MonoBehaviour
 
     [HideInInspector] public bool isPickedUp;
     public float minAir;
+
+    [SerializeField] UnityEvent onPickedUp;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class Item : MonoBehaviour
             if (bubble.air >= minAir && bubble.pickedItem == null) {
                 isPickedUp = true;
                 bubble.pickedItem = this;
+                onPickedUp.Invoke();
             }            
         }
     }
@@ -48,4 +52,6 @@ public class Item : MonoBehaviour
             bubble = null;
         }
     }
+
+
 }

@@ -188,8 +188,19 @@ public class GameManager : MonoBehaviour
 
     public void Replay()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        foreach (var player in Players)
+        {
+            Destroy(player);
+        }
+        Players.Clear();
+        cameraMultiTarget.Targets.Clear();
+
+        SceneManager.UnloadSceneAsync(levels[levelIndex]);
+        SceneManager.LoadSceneAsync(levels[levelIndex], LoadSceneMode.Additive);
+
+        StartCoroutine(JoinPlayers());
+
+        interactableCamera.Priority= -1;
     }
 
     public void Quit()
