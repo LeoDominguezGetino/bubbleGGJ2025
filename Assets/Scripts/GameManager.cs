@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseScreen;
     public DeathPanel deathScreen;
 
+    public string[] levels;
+    public int levelIndex;
+
     private void Start()
     {
         Instance = this;
@@ -134,7 +137,7 @@ public class GameManager : MonoBehaviour
         mainMenuScreen.SetActive(false);
         successScreen.SetActive(false);
 
-        SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(levels[levelIndex], LoadSceneMode.Additive);
 
         StartCoroutine(JoinPlayers());
         menuCamera.Priority = -1;
@@ -170,6 +173,14 @@ public class GameManager : MonoBehaviour
 
         SceneManager.UnloadSceneAsync("Level1");
         gameStarted = false;
+    }
+
+    public void ChangeLevelSelection(int amount)
+    {
+        levelIndex += amount;
+
+        if (levelIndex >= levels.Length) { levelIndex  = 0; }
+        else if (levelIndex < 0) { levelIndex = levels.Length - 1; }
     }
 
     public void Replay()

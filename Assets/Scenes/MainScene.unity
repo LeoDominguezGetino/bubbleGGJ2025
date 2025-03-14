@@ -684,7 +684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 162013206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1552141443}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeLevelSelection
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &162013206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3692,7 +3704,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 878294336}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1552141443}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeLevelSelection
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &878294336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4889,7 +4913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1299141910
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4994,7 +5018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1300803752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6106,7 +6130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 1
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 4
   m_AllowJoining: 0
   m_JoinBehavior: 1
   m_PlayerJoinedEvent:
@@ -6209,6 +6233,10 @@ MonoBehaviour:
   successScreen: {fileID: 1752634603}
   pauseScreen: {fileID: 1447447979}
   deathScreen: {fileID: 1476166415}
+  levels:
+  - Tutorial
+  - Level1
+  levelIndex: 0
 --- !u!82 &1552141444
 AudioSource:
   m_ObjectHideFlags: 0
