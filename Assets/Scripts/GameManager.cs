@@ -70,16 +70,22 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //if (Players[0].GetComponent<BubbleMovement>().air < 0.5f) {
-        //    pirates_AudioSource.volume = 0;
-        //    tiny_AudioSource.volume = 1;
-        //} else
-        //{
-        //    pirates_AudioSource.volume = 1;
-        //    tiny_AudioSource.volume = 0;
-        //}
+        if (Players.Count <= 0 ) return;
 
-        
+        Debug.Log(Players[0].GetComponent<BubbleMovement>().air);
+
+        if (Players[0].GetComponent<BubbleMovement>().air < 0.8f)
+        {
+            pirates_AudioSource.volume = 0;
+            tiny_AudioSource.volume = 1;
+        }
+        else
+        {
+            pirates_AudioSource.volume = 1;
+            tiny_AudioSource.volume = 0;
+        }
+
+
     }
 
     public void RefreshDevices()
@@ -174,6 +180,16 @@ public class GameManager : MonoBehaviour
 
         SceneManager.UnloadSceneAsync(levels[levelIndex]);
         gameStarted = false;
+    }
+
+    public void MenuMusic()
+    {
+        m_AudioSource.Stop();
+        pirates_AudioSource.Stop();
+        tiny_AudioSource.Stop();
+
+        m_AudioSource.clip = menuMusic;
+        m_AudioSource.Play();
     }
 
     public void ChangeLevelSelection(int amount)

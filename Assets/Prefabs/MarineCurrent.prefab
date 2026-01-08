@@ -3794,7 +3794,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 1
     maxCollisionShapes: 256
-    quality: 0
+    quality: 1
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
@@ -4777,6 +4777,8 @@ ParticleSystemRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4798,6 +4800,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -4870,7 +4873,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
 --- !u!249 &6548527478527801406
 AreaEffector2D:
-  serializedVersion: 2
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4886,8 +4889,8 @@ AreaEffector2D:
   m_ForceMagnitude: 40
   m_ForceVariation: 0
   m_ForceTarget: 0
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_LinearDamping: 0
+  m_AngularDamping: 0
 --- !u!61 &3335879034729410633
 BoxCollider2D:
   m_ObjectHideFlags: 0
